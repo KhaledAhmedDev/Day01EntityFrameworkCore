@@ -9,7 +9,8 @@ namespace Demo01EfCore
         {
             using CompanyDbContext dbContext = new CompanyDbContext();  //open connection with DB
 
-          await dbContext.Database.MigrateAsync(); // Auto Apply any pending migrations
+            #region Context Setup
+            // await dbContext.Database.MigrateAsync(); // Auto Apply any pending migrations
             //Database Connection:Unmanaged resource
             //CLR Will not deal with dbcontext object in heap
 
@@ -34,7 +35,9 @@ namespace Demo01EfCore
 
 
 
-            //};
+            //}; 
+            #endregion
+
         }
     }
 }
