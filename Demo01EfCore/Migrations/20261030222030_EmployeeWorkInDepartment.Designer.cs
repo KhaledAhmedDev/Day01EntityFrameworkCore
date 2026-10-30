@@ -13,7 +13,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Demo01EfCore.Migrations
 {
     [DbContext(typeof(CompanyDbContext))]
-    [Migration("20261028201650_EmployeeWorkInDepartment")]
+    [Migration("20261030222030_EmployeeWorkInDepartment")]
     partial class EmployeeWorkInDepartment
     {
         /// <inheritdoc />
@@ -68,6 +68,9 @@ namespace Demo01EfCore.Migrations
                         .HasColumnType("datetime2")
                         .HasDefaultValueSql("GETDATE()");
 
+                    b.Property<int>("DeptId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -90,9 +93,6 @@ namespace Demo01EfCore.Migrations
                         .HasPrecision(10, 3)
                         .HasColumnType("decimal(10,3)");
 
-                    b.Property<int>("WorkingDepartmentDeptId")
-                        .HasColumnType("int");
-
                     b.ComplexProperty<Dictionary<string, object>>("EmpAddress", "Demo01EfCore.Models.Employee.EmpAddress#Address", b1 =>
                         {
                             b1.IsRequired();
@@ -112,7 +112,7 @@ namespace Demo01EfCore.Migrations
 
                     b.HasKey("EmpId");
 
-                    b.HasIndex("WorkingDepartmentDeptId");
+                    b.HasIndex("DeptId");
 
                     b.ToTable("EmployeesTable", null, t =>
                         {
@@ -159,7 +159,7 @@ namespace Demo01EfCore.Migrations
                 {
                     b.HasOne("Demo01EfCore.Models.Department", "WorkingDepartment")
                         .WithMany("Employees")
-                        .HasForeignKey("WorkingDepartmentDeptId")
+                        .HasForeignKey("DeptId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

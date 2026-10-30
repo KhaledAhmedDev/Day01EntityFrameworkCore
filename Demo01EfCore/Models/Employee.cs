@@ -43,6 +43,14 @@ namespace Demo01EfCore.Models
         public Address EmpAddress { get; set; } = null!;
         #endregion
 
+        #region Employee work in Department [1:M] [Total Participation]
+        //[ForeignKey(nameof(WorkingDepartment))]
+        public int DeptId { get; set; }
+
+        //[InverseProperty(nameof(Department.Employees))]
+        public Department WorkingDepartment { get; set; } = null!;
+        #endregion
+
 
     }
 }

@@ -65,7 +65,7 @@ namespace Demo01EfCore.Configurations
                 .WithOne(E => E.ManagedDepartment)
                 .HasForeignKey<Department>()
                 .OnDelete(DeleteBehavior.Restrict);
-                
+
 
 
             //1-Cascade
@@ -107,6 +107,11 @@ namespace Demo01EfCore.Configurations
             // No ActiON in Db
 
 
+            //D.HasMany(D => D.Employees)
+            //    .WithOne(E => E.WorkingDepartment)
+            //    .HasForeignKey(E => E.DeptId)
+            //    .OnDelete(DeleteBehavior.Restrict);
+                
 
 
 

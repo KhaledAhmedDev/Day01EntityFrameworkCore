@@ -11,21 +11,21 @@ namespace Demo01EfCore.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AddColumn<int>(
-                name: "WorkingDepartmentDeptId",
+                name: "DeptId",
                 table: "EmployeesTable",
                 type: "int",
                 nullable: false,
                 defaultValue: 0);
 
             migrationBuilder.CreateIndex(
-                name: "IX_EmployeesTable_WorkingDepartmentDeptId",
+                name: "IX_EmployeesTable_DeptId",
                 table: "EmployeesTable",
-                column: "WorkingDepartmentDeptId");
+                column: "DeptId");
 
             migrationBuilder.AddForeignKey(
-                name: "FK_EmployeesTable_DepartmentsTable_WorkingDepartmentDeptId",
+                name: "FK_EmployeesTable_DepartmentsTable_DeptId",
                 table: "EmployeesTable",
-                column: "WorkingDepartmentDeptId",
+                column: "DeptId",
                 principalSchema: "Sales",
                 principalTable: "DepartmentsTable",
                 principalColumn: "DeptId",
@@ -36,15 +36,15 @@ namespace Demo01EfCore.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropForeignKey(
-                name: "FK_EmployeesTable_DepartmentsTable_WorkingDepartmentDeptId",
+                name: "FK_EmployeesTable_DepartmentsTable_DeptId",
                 table: "EmployeesTable");
 
             migrationBuilder.DropIndex(
-                name: "IX_EmployeesTable_WorkingDepartmentDeptId",
+                name: "IX_EmployeesTable_DeptId",
                 table: "EmployeesTable");
 
             migrationBuilder.DropColumn(
-                name: "WorkingDepartmentDeptId",
+                name: "DeptId",
                 table: "EmployeesTable");
         }
     }

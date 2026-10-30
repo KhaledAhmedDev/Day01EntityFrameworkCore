@@ -85,6 +85,11 @@ namespace Demo01EfCore.Configurations
                 .HasColumnName("EmployeeCountry");
 
 
+                builder.HasOne(E => E.WorkingDepartment)
+                .WithMany(D => D.Employees)
+                .HasForeignKey(E => E.DeptId)
+                .OnDelete(DeleteBehavior.Cascade);
+
 
             });  // Ef Core 8 : owned relationship
         }

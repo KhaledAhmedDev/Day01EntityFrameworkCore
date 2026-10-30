@@ -31,5 +31,11 @@ namespace Demo01EfCore.Models
         //Entity Of Principal +Pk=> EmployeeEmpId
         #endregion
 
+
+        #region Working Relationship [Department:Employee] [One:Many] [Many is Mandatory]
+
+        public ICollection<Employee> Employees { get; set; } = null!;
+        #endregion
+
     }
 }
